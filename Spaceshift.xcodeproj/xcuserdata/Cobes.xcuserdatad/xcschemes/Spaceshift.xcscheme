@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4613D5E1BA7C3AE0098DD2F"
+               BuildableName = "Spaceshift.app"
+               BlueprintName = "Spaceshift"
+               ReferencedContainer = "container:Spaceshift.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -12,7 +28,36 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4613D761BA7C3AE0098DD2F"
+               BuildableName = "SpaceshiftTests.xctest"
+               BlueprintName = "SpaceshiftTests"
+               ReferencedContainer = "container:Spaceshift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E4613D811BA7C3AE0098DD2F"
+               BuildableName = "SpaceshiftUITests.xctest"
+               BlueprintName = "SpaceshiftUITests"
+               ReferencedContainer = "container:Spaceshift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E4613D5E1BA7C3AE0098DD2F"
+            BuildableName = "Spaceshift.app"
+            BlueprintName = "Spaceshift"
+            ReferencedContainer = "container:Spaceshift.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -26,6 +71,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E4613D5E1BA7C3AE0098DD2F"
+            BuildableName = "Spaceshift.app"
+            BlueprintName = "Spaceshift"
+            ReferencedContainer = "container:Spaceshift.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -35,6 +90,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E4613D5E1BA7C3AE0098DD2F"
+            BuildableName = "Spaceshift.app"
+            BlueprintName = "Spaceshift"
+            ReferencedContainer = "container:Spaceshift.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
