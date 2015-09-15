@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "585EFEA5B145ADD5D4E73947E1B92C4DA005124E",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "585EFEA5B145ADD5D4E73947E1B92C4DA005124E" : 0,
+    "B276C5EF096B664C23BA1BE5C769F8E60F58C804" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B1F3C313-63E7-4227-9A1A-9831825C2EAC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "585EFEA5B145ADD5D4E73947E1B92C4DA005124E" : "Spaceshift\/",
+    "B276C5EF096B664C23BA1BE5C769F8E60F58C804" : "GyroTest\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Spaceshift",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Spaceshift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Cobez\/Spaceshift.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "585EFEA5B145ADD5D4E73947E1B92C4DA005124E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Cobez\/GyroTest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B276C5EF096B664C23BA1BE5C769F8E60F58C804"
+    }
+  ]
+}
