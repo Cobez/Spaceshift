@@ -16,41 +16,63 @@ let topUser:UInt32 = 0x1 << 3
 let lowUser:UInt32 = 0x1 << 4
 let wallPhys:UInt32 = 0x1 << 5
 
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
-    
     let motion = CMMotionManager()
     let queue = NSOperationQueue()
     
-    let user:User = User()
-    var columns:[Column] = []
+    var lastUpdateTimeInterval: CFTimeInterval = 0
+    var dt: CFTimeInterval = 0
     
+    var dY: Double = 0.0
+    
+    let user:User = User()
     let wall:SKNode = SKNode()
     
+    let gx = DataLabel()
+    let gy = DataLabel()
+    let gz = DataLabel()
+    
+    let ax = DataLabel()
+    let ay = DataLabel()
+    let az = DataLabel()
+    
     override func didMoveToView(view: SKView) {
+        
+        setupEnvironment()
         
         setupUser()
         setupColumns()
         
-        let delta:CGFloat = 5
+        setupGyroLabels()
+        setupAccelLabels()
         
-//        self.wall.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/1.1)
+        enableGyroControl()
+        enableAccelControl()
+    
+    }
+    
+    override func update(currentTime: NSTimeInterval) {
+        dt += currentTime - lastUpdateTimeInterval
+        lastUpdateTimeInterval = currentTime
         
-        self.backgroundColor = SKColor(red: 81/255, green: 80/255, blue: 162/255, alpha: 1)
-        self.physicsWorld.contactDelegate = self
-        self.physicsWorld.gravity = CGVectorMake(0,0)
-        
+        if dt >= 1.1 {
+            dt = 0.5
+        }
+    }
+    
+    func enableGyroControl() {
+        let delta:CGFloat = 25   // Normalized control movement
         
         if motion.gyroAvailable {
             motion.startGyroUpdates()
-//            motion.startAccelerometerUpdates()
-//            motion.accelerometerUpdateInterval = 1.0 / 100.0
-            motion.gyroUpdateInterval = 1.0 / 100.0
-            motion.startGyroUpdatesToQueue(queue, withHandler: {data, error in
+            motion.gyroUpdateInterval = 1.0 / 40.0
+            motion.startGyroUpdatesToQueue(queue, withHandler: { data, error in
                 guard let data = data else {
                     return
                 }
                 
-//                self.showGyroLabels(data)
+//                self.updateGyroLabels(data)
                 
                 if data.rotationRate.y > 0.2 {
                     self.wall.position.y = (self.wall.position.y + delta)
@@ -60,22 +82,49 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.wall.position.y = (self.wall.position.y - delta)
                 }
                 
-                if data.rotationRate.x > 0.15 {
+                if data.rotationRate.x > 0.10 && /*self.dY < 0.05 &&*/ data.rotationRate.z > 0.1 {
                     self.wall.position.x = (self.wall.position.x + 2*delta)
                 }
-                else if data.rotationRate.x < -0.15 {
+                else if data.rotationRate.x < -0.10 && /*self.dY < 0.05 &&*/ data.rotationRate.z < -0.1 {
                     self.wall.position.x = (self.wall.position.x - 2*delta)
                 }
             })
             
-//            motion.startAccelerometerUpdatesToQueue(queue, withHandler: {data, error in
-//                guard let data = data else {
-//                    return
-//                }
-//                    self.showAccelLabels(data)
-//
-//                })
         }
+    }
+    
+    func enableAccelControl() {
+        //        let delta:CGFloat = 5
+        var deltaY: Double = 0.0
+        
+        if motion.accelerometerAvailable {
+            motion.startAccelerometerUpdates()
+            motion.accelerometerUpdateInterval = 1.0 / 40.0
+            motion.startAccelerometerUpdatesToQueue(queue, withHandler: { data, error in
+                guard let data = data else {
+                    return
+                }
+                
+//                self.updateAccelLabels(data)
+                
+                if self.dt >= 1.0 {
+                    deltaY = data.acceleration.y
+//                    print("\(deltaY)")
+                }
+                self.dY = abs(deltaY - data.acceleration.y)
+                
+//                if abs(deltaY - data.acceleration.y) > 0.1 {
+//                    
+//                }
+                
+            })
+        }
+    }
+    
+    func setupEnvironment() {
+        self.backgroundColor = SKColor(red: 81/255, green: 80/255, blue: 162/255, alpha: 1)
+        self.physicsWorld.contactDelegate = self
+        self.physicsWorld.gravity = CGVectorMake(0,0)
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -97,12 +146,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func setupUser() {
         user.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
-//        let centerX = SKRange(constantValue: self.frame.width/2)
-//        let centerY = SKRange(constantValue: self.frame.height/2)
-//        let centerConstraint = SKConstraint.positionX(centerX, y: centerY)
-//        user.constraints = [centerConstraint]
-
         addChild(user)
+    }
+    
+    func setupGyroLabels() {
+        gx.position = CGPointMake(100, 310)
+        gy.position = CGPointMake(100, 250)
+        gz.position = CGPointMake(100, 190)
+        
+        self.addChild(gx)
+        self.addChild(gy)
+        self.addChild(gz)
+    }
+    
+    func updateGyroLabels(data: CMGyroData) {
+        gx.text = NSString(format: "gyro X: %.2f", data.rotationRate.x) as String
+        gy.text = NSString(format: "gyro Y: %.2f", data.rotationRate.y) as String
+        gz.text = NSString(format: "gyro Z: %.2f", data.rotationRate.z) as String
+    }
+    
+    func setupAccelLabels() {
+        ax.position = CGPointMake(300, 310)
+        ay.position = CGPointMake(300, 250)
+        az.position = CGPointMake(300, 190)
+        
+        self.addChild(ax)
+        self.addChild(ay)
+        self.addChild(az)
+    }
+    
+    func updateAccelLabels(data: CMAccelerometerData) {
+        ax.text = NSString(format: "Accel X: %.2f", data.acceleration.x) as String
+        ay.text = NSString(format: "Accel Y: %.2f", data.acceleration.y) as String
+        az.text = NSString(format: "Accel Z: %.2f", data.acceleration.z) as String
     }
     
     func setupColumns() {
@@ -146,58 +222,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         self.addChild(wall)
         
-    }
-    
-    func showGyroLabels(data:CMGyroData) {
-        let gyroXLabel = SKLabelNode(fontNamed: "Helvetica Neue Thin")
-        let gyroYLabel = SKLabelNode(fontNamed: "Helvetica Neue Thin")
-        let gyroZLabel = SKLabelNode(fontNamed: "Helvetica Neue Thin")
-        
-        gyroXLabel.fontSize = 22
-        gyroXLabel.fontColor = SKColor.blackColor()
-        gyroXLabel.position = CGPointMake(100, 310)
-       
-        gyroYLabel.fontSize = 22
-        gyroYLabel.fontColor = SKColor.blackColor()
-        gyroYLabel.position = CGPointMake(100, 250)
-       
-        gyroZLabel.fontSize = 22
-        gyroZLabel.fontColor = SKColor.blackColor()
-        gyroZLabel.position = CGPointMake(100, 190)
-        
-        gyroXLabel.text = NSString(format: "gyro X: %.2f", data.rotationRate.x) as String
-        gyroYLabel.text = NSString(format: "gyro Y: %.2f", data.rotationRate.y) as String
-        gyroZLabel.text = NSString(format: "gyro Z: %.2f", data.rotationRate.z) as String
-        
-        self.addChild(gyroXLabel)
-        self.addChild(gyroYLabel)
-        self.addChild(gyroZLabel)
-    }
-    
-    func showAccelLabels(data:CMAccelerometerData) {
-        let accelXLabel = SKLabelNode(fontNamed: "Helvetica Neue Thin")
-        let accelYLabel = SKLabelNode(fontNamed: "Helvetica Neue Thin")
-        let accelZLabel = SKLabelNode(fontNamed: "Helvetica Neue Thin")
-        
-        accelXLabel.fontSize = 22
-        accelXLabel.fontColor = SKColor.blackColor()
-        accelXLabel.position = CGPointMake(100, 280)
-        
-        accelYLabel.fontSize = 22
-        accelYLabel.fontColor = SKColor.blackColor()
-        accelYLabel.position = CGPointMake(100, 220)
-        
-        accelZLabel.fontSize = 22
-        accelZLabel.fontColor = SKColor.blackColor()
-        accelZLabel.position = CGPointMake(100, 160)
-        
-        accelXLabel.text = NSString(format: "accel X: %.2f", data.acceleration.x) as String
-        accelYLabel.text = NSString(format: "accel Y: %.2f", data.acceleration.y) as String
-        accelZLabel.text = NSString(format: "accel Z: %.2f", data.acceleration.z) as String
-        
-        self.addChild(accelXLabel)
-        self.addChild(accelYLabel)
-        self.addChild(accelZLabel)
     }
     
 }
