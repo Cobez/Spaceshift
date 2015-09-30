@@ -128,7 +128,41 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact) {
         var wallBody:SKPhysicsBody
-        print("Contact")
+        let lPos = self.user.position.x - contact.contactPoint.x
+        let rPos = contact.contactPoint.x - self.user.position.x
+        let dPos = self.user.position.y - contact.contactPoint.y
+        let uPos = contact.contactPoint.y - self.user.position.y
+        var max = rPos
+        var ml = "right"
+        if lPos > max {
+            max = lPos
+            ml = "left"
+        }
+        if uPos > max {
+            max = uPos
+            ml = "up"
+        }
+        if dPos > max {
+            max = dPos
+            ml = "down"
+        }
+        print(ml)
+        //print("Contact point", contact.contactPoint.y)
+        //print("User ", self.user.position.y)
+        //if contact.contactPoint.y > self.user.position.y {
+        //    print("Contact with top of user")
+        //}
+        //print(NSString(format: "dY: %.2f", contact.contactPoint.y - self.user.position.x))
+        /*
+        let myLabel:SKLabelNode = SKLabelNode(text: "x")
+        let myLabel2:SKLabelNode = SKLabelNode(text: "0")
+        myLabel2.position.y = contact.contactPoint.y
+        myLabel2.position.x = contact.contactPoint.x
+        myLabel.position.y = self.user.position.y
+        myLabel.position.x = self.user.position.x
+        self.addChild(myLabel)
+        self.addChild(myLabel2)
+        */
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
             wallBody = contact.bodyB
         } else {
@@ -136,9 +170,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         if wallBody.categoryBitMask == wallPhys {
-            print("Contact")
-
-//            user.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+            // print("Contact")
+            user.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
         }
         
     }

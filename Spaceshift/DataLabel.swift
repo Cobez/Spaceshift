@@ -10,9 +10,7 @@ import UIKit
 import SpriteKit
 
 class DataLabel: SKLabelNode {
-
     // vars here
-    
     override init() {
         super.init()
     }
