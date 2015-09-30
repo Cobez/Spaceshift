@@ -21,7 +21,7 @@
 		E4613DA71BA7CA100098DD2F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4613DA21BA7CA100098DD2F /* User.swift */; };
 		E4613DA81BA7CA100098DD2F /* column.png in Resources */ = {isa = PBXBuildFile; fileRef = E4613DA31BA7CA100098DD2F /* column.png */; };
 		E4613DA91BA7CA100098DD2F /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = E4613DA41BA7CA100098DD2F /* user.png */; };
-		E48A14B61BAC542A0098713C /* DataLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48A14B51BAC542A0098713C /* DataLabel.swift */; settings = {ASSET_TAGS = (); }; };
+		E48A14B61BAC542A0098713C /* DataLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48A14B51BAC542A0098713C /* DataLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -433,6 +433,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Spaceshift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cobez.Spaceshift;
@@ -444,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Spaceshift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cobez.Spaceshift;

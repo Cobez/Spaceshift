@@ -66,7 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if motion.gyroAvailable {
             motion.startGyroUpdates()
-            motion.gyroUpdateInterval = 1.0 / 40.0
+            motion.gyroUpdateInterval = 1.0 / 60.0
             motion.startGyroUpdatesToQueue(queue, withHandler: { data, error in
                 guard let data = data else {
                     return
@@ -82,14 +82,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.wall.position.y = (self.wall.position.y - delta)
                 }
                 
-                if data.rotationRate.x > 0.10 && /*self.dY < 0.05 &&*/ data.rotationRate.z > 0.1 {
+                if data.rotationRate.x > 0.10 /* && self.dY < 0.05 && data.rotationRate.z > 0.1 */ {
                     self.wall.position.x = (self.wall.position.x + 2*delta)
                 }
-                else if data.rotationRate.x < -0.10 && /*self.dY < 0.05 &&*/ data.rotationRate.z < -0.1 {
+                else if data.rotationRate.x < -0.10 /* && self.dY < 0.05 && data.rotationRate.z < -0.1 */ {
                     self.wall.position.x = (self.wall.position.x - 2*delta)
                 }
             })
-            
         }
     }
     
@@ -99,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if motion.accelerometerAvailable {
             motion.startAccelerometerUpdates()
-            motion.accelerometerUpdateInterval = 1.0 / 40.0
+            motion.accelerometerUpdateInterval = 1.0 / 60.0
             motion.startAccelerometerUpdatesToQueue(queue, withHandler: { data, error in
                 guard let data = data else {
                     return
@@ -154,9 +153,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gy.position = CGPointMake(100, 250)
         gz.position = CGPointMake(100, 190)
         
-        self.addChild(gx)
-        self.addChild(gy)
-        self.addChild(gz)
+        addChild(gx)
+        addChild(gy)
+        addChild(gz)
     }
     
     func updateGyroLabels(data: CMGyroData) {
@@ -170,9 +169,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ay.position = CGPointMake(300, 250)
         az.position = CGPointMake(300, 190)
         
-        self.addChild(ax)
-        self.addChild(ay)
-        self.addChild(az)
+        addChild(ax)
+        addChild(ay)
+        addChild(az)
     }
     
     func updateAccelLabels(data: CMAccelerometerData) {
