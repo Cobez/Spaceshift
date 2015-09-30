@@ -21,7 +21,7 @@ class Column: SKSpriteNode {
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = wallPhys
         self.physicsBody?.contactTestBitMask = userPhys
-        self.physicsBody?.collisionBitMask = 0x0
+        self.physicsBody?.collisionBitMask = userPhys
     }
     
     required init?(coder aDecoder: NSCoder) {
