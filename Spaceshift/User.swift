@@ -43,7 +43,7 @@ class User: SKSpriteNode {
 class User: SKSpriteNode {
     // Vars here
     init() {
-        let texture = SKTexture(imageNamed: "user")
+        let texture = SKTexture(imageNamed: "body")
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
         self.name = "user"
         
@@ -52,7 +52,8 @@ class User: SKSpriteNode {
         self.physicsBody?.categoryBitMask = userPhys
         self.physicsBody?.contactTestBitMask = wallPhys
         self.physicsBody?.collisionBitMask = wallPhys
-        
+        self.physicsBody?.friction = 0.0
+        self.physicsBody?.restitution = 1.0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -71,6 +72,16 @@ class User: SKSpriteNode {
         if self.physicsBody?.velocity.dx != 0 && self.physicsBody?.velocity.dy != 0 {
             self.runAction(userRot)
         }
+    }
+    
+    func startSpin() {
+        let userRot = SKAction.repeatActionForever(SKAction.rotateByAngle(5, duration: 1))
+        self.runAction(userRot, withKey: "rotation")
+        
+    }
+    
+    func stopSpin() {
+        self.removeActionForKey("rotation")
     }
 }
 

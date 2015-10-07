@@ -27,7 +27,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dY: Double = 0.0
     
     let user:User = User()
-    let wall:SKNode = SKNode()
+    let face = SKSpriteNode(imageNamed: "face")
+
+    let clouds:SKEmitterNode = SKEmitterNode(fileNamed: "Clouds")!
+    let shootingStar:SKEmitterNode = SKEmitterNode(fileNamed: "Spark")!
+    
+    var starTimer:Int = 0
     
     let gx = DataLabel()
     let gy = DataLabel()
@@ -40,53 +45,63 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMoveToView(view: SKView) {
         
         setupEnvironment()
-        
         setupUser()
-        setupColumns()
         
         setupGyroLabels()
         setupAccelLabels()
         
         enableGyroControl()
-        enableAccelControl()
-    
     }
     
     override func update(currentTime: NSTimeInterval) {
-        dt += currentTime - lastUpdateTimeInterval
-        lastUpdateTimeInterval = currentTime
         
-        if dt >= 1.1 {
-            dt = 0.5
+        starTimer += 1
+        if (starTimer >= 40) {
+            addShootingStars()
+            starTimer = 0
+        }
+        
+        face.position = user.position
+        
+        if (user.position != CGPointMake(self.frame.width/2, self.frame.height/2)) {
+            user.position = CGPointMake(self.frame.width/2, self.frame.height/2)
+            user.stopSpin()
+        }
+        else if user.actionForKey("rotation") == nil {
+            user.startSpin()
         }
     }
     
     func enableGyroControl() {
-        let delta:CGFloat = 25   // Normalized control movement
-        
+        let delta:CGFloat = 10   // Normalized control movement
+        let threshold:Double = 0.12
+        let wall = self.childNodeWithName("wall")
         if motion.gyroAvailable {
             motion.startGyroUpdates()
-            motion.gyroUpdateInterval = 1.0 / 60.0
+            motion.gyroUpdateInterval = 1.0 / 100.0
             motion.startGyroUpdatesToQueue(queue, withHandler: { data, error in
                 guard let data = data else {
                     return
                 }
+//                                self.updateGyroLabels(data)
                 
-//                self.updateGyroLabels(data)
-                
-                if data.rotationRate.y > 0.2 {
-                    self.wall.position.y = (self.wall.position.y + delta)
-                    
-                }
-                else if data.rotationRate.y < -0.2 {
-                    self.wall.position.y = (self.wall.position.y - delta)
-                }
-                
-                if data.rotationRate.x > 0.10 /* && self.dY < 0.05 && data.rotationRate.z > 0.1 */ {
-                    self.wall.position.x = (self.wall.position.x + 2*delta)
-                }
-                else if data.rotationRate.x < -0.10 /* && self.dY < 0.05 && data.rotationRate.z < -0.1 */ {
-                    self.wall.position.x = (self.wall.position.x - 2*delta)
+                // Move either vertically or horizontally, but not both
+                if abs(data.rotationRate.y) > abs(data.rotationRate.x) {
+                    //
+                    if data.rotationRate.y > threshold && self.user.position.y <= self.frame.height/2 {
+                        wall!.position.y = (wall!.position.y + round(CGFloat(data.rotationRate.y+1))*delta)
+                        
+                    }
+                    else if data.rotationRate.y < -threshold && self.user.position.y >= self.frame.height/2 {
+                        wall!.position.y = (wall!.position.y + round(CGFloat(data.rotationRate.y-1))*delta)
+                    }
+                } else {
+                    if data.rotationRate.x > threshold && self.user.position.x <= self.frame.width/2 {
+                        wall!.position.x = (wall!.position.x + round(CGFloat(data.rotationRate.x+1))*delta)
+                    }
+                    else if data.rotationRate.x < -threshold && self.user.position.x >= self.frame.width/2 {
+                        wall!.position.x = (wall!.position.x + round(CGFloat(data.rotationRate.x-1))*delta)
+                    }
                 }
             })
         }
@@ -104,82 +119,59 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     return
                 }
                 
-//                self.updateAccelLabels(data)
+                //                self.updateAccelLabels(data)
                 
                 if self.dt >= 1.0 {
                     deltaY = data.acceleration.y
-//                    print("\(deltaY)")
+                    //                    print("\(deltaY)")
                 }
                 self.dY = abs(deltaY - data.acceleration.y)
                 
-//                if abs(deltaY - data.acceleration.y) > 0.1 {
-//                    
-//                }
+                //                if abs(deltaY - data.acceleration.y) > 0.1 {
+                //
+                //                }
                 
             })
         }
     }
     
     func setupEnvironment() {
-        self.backgroundColor = SKColor(red: 81/255, green: 80/255, blue: 162/255, alpha: 1)
+        //        self.backgroundColor = SKColor(red: 31/255, green: 122/255, blue: 31/255, alpha: 1.0)
+        //        self.backgroundColor = SKColor.blackColor()
+        //        self.backgroundColor = SKColor.clearColor()
         self.physicsWorld.contactDelegate = self
         self.physicsWorld.gravity = CGVectorMake(0,0)
-    }
-    
-    func didBeginContact(contact: SKPhysicsContact) {
-        var wallBody:SKPhysicsBody
-        let lPos = self.user.position.x - contact.contactPoint.x
-        let rPos = contact.contactPoint.x - self.user.position.x
-        let dPos = self.user.position.y - contact.contactPoint.y
-        let uPos = contact.contactPoint.y - self.user.position.y
-        var max = rPos
-        var ml = "right"
-        if lPos > max {
-            max = lPos
-            ml = "left"
-        }
-        if uPos > max {
-            max = uPos
-            ml = "up"
-        }
-        if dPos > max {
-            max = dPos
-            ml = "down"
-        }
-        print(ml)
-        //print("Contact point", contact.contactPoint.y)
-        //print("User ", self.user.position.y)
-        //if contact.contactPoint.y > self.user.position.y {
-        //    print("Contact with top of user")
-        //}
-        //print(NSString(format: "dY: %.2f", contact.contactPoint.y - self.user.position.x))
-        /*
-        let myLabel:SKLabelNode = SKLabelNode(text: "x")
-        let myLabel2:SKLabelNode = SKLabelNode(text: "0")
-        myLabel2.position.y = contact.contactPoint.y
-        myLabel2.position.x = contact.contactPoint.x
-        myLabel.position.y = self.user.position.y
-        myLabel.position.x = self.user.position.x
-        self.addChild(myLabel)
-        self.addChild(myLabel2)
-        */
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            wallBody = contact.bodyB
-        } else {
-            wallBody = contact.bodyA
-        }
         
-        if wallBody.categoryBitMask == wallPhys {
-            // print("Contact")
-            user.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
-        }
-        
+        //        let background = SKSpriteNode(imageNamed: "SSBackground")
+        //        background.position = CGPointMake(self.frame.width/2, self.frame.height/2)
+        //        background.zRotation = CGFloat(M_PI_2)
+        //        background.zPosition = -20
+        //        self.addChild(background)
     }
     
     func setupUser() {
         user.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2)
+        user.zPosition = 10
+        face.zPosition = 20
+        face.position = user.position
+
         addChild(user)
+        addChild(face)
     }
+    
+//    func didBeginContact(contact: SKPhysicsContact) {
+//        var boundary:SKPhysicsBody
+//        
+//        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+//            boundary = contact.bodyB
+//        } else {
+//            boundary = contact.bodyA
+//        }
+//        
+//        if boundary.categoryBitMask == wallPhys {
+//        }
+//        
+//    }
     
     func setupGyroLabels() {
         gx.position = CGPointMake(100, 310)
@@ -213,47 +205,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         az.text = NSString(format: "Accel Z: %.2f", data.acceleration.z) as String
     }
     
-    func setupColumns() {
-        var rotation = 1;
-        // Create a wall of multiple columns stacked on each side
-        for var i = -1; i <= 1; i += 2 {
-            for var j = -2; j <= 2; j++ {
-                let tempCol:Column = Column()
-                let tempX:CGFloat = self.frame.size.width/2 + CGFloat(i) * tempCol.frame.height/1.3
-                tempCol.position = CGPointMake(tempX, self.frame.height/2 + CGFloat(j)*tempCol.frame.height)
-                tempCol.zRotation = CGFloat(M_PI/Double(rotation))
-                wall.addChild(tempCol)
-            }
-            rotation *= -1
-        }
-        rotation = 2
-        // Create the rows centered between the walls to weave through
-        for var i = -2; i <= 2; i++ {
-            if i == 0 {
-                rotation *= 1
-            }
-            else {
-                let tempCol:Column = Column()
-                let tempY:CGFloat = self.frame.size.height/2 + CGFloat(i) * tempCol.frame.height/2.2
-                tempCol.position = CGPointMake(self.frame.width/2, tempY)
-                tempCol.zRotation = CGFloat(M_PI/Double(rotation))
-                wall.addChild(tempCol)
-            }
-        }
-        rotation = 2
-        // Create top and bottom borders
-        for var i = -2; i <= 2; i += 4 {
-            for var j = -1; j <= 1; j += 2 {
-                let tempCol:Column = Column()
-                let tempY:CGFloat = self.frame.size.height/2 + CGFloat(i) * tempCol.frame.height
-                tempCol.position = CGPointMake(self.frame.width/2 + CGFloat(j) * tempCol.frame.height/2, tempY)
-                tempCol.zRotation = CGFloat(M_PI/Double(rotation))
-                wall.addChild(tempCol)
-            }
-            rotation *= -1
-        }
-        self.addChild(wall)
+    func addShootingStars() {
+        let pos = CGFloat(arc4random_uniform(UInt32(self.frame.width)))
+        let zPos = CGFloat(arc4random_uniform(UInt32(6)))
         
+        
+        let spark = SKEmitterNode(fileNamed: "Spark")
+        spark!.advanceSimulationTime(10)
+        spark!.position = CGPointMake(pos, self.frame.height)
+        spark!.zPosition = zPos
+        self.addChild(spark!)
+        
+        let fly = SKAction.moveTo(CGPointMake(pos, -35), duration: 1)
+        let remove = SKAction.removeFromParent()
+        let sparkSeq = SKAction.sequence([fly, remove])
+        spark!.runAction(sparkSeq)
     }
     
 }
