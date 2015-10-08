@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		87239F181BC70A6B001F7C33 /* Level 2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 87239F171BC70A6B001F7C33 /* Level 2.sks */; settings = {ASSET_TAGS = (); }; };
 		E44A1BB51BC3505100B5DC95 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E44A1BB41BC3505100B5DC95 /* StartScene.sks */; };
 		E44A1BB71BC3509600B5DC95 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB61BC3509600B5DC95 /* StartScene.swift */; };
 		E44A1BB91BC3576700B5DC95 /* LevelSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		87239F171BC70A6B001F7C33 /* Level 2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level 2.sks"; sourceTree = "<group>"; };
 		E44A1BB41BC3505100B5DC95 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		E44A1BB61BC3509600B5DC95 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionScene.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				E4613D721BA7C3AE0098DD2F /* Info.plist */,
 				E44A1BB41BC3505100B5DC95 /* StartScene.sks */,
 				E4647E751BC47C84008EC532 /* LevelSelectionScene.sks */,
+				87239F171BC70A6B001F7C33 /* Level 2.sks */,
 			);
 			path = Spaceshift;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87239F181BC70A6B001F7C33 /* Level 2.sks in Resources */,
 				E4647E761BC47C84008EC532 /* LevelSelectionScene.sks in Resources */,
 				E4903A611BBCE81000FDCD57 /* spark.png in Resources */,
 				E4647E791BC48015008EC532 /* column2.png in Resources */,
