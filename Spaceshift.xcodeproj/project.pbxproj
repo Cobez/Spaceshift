@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; };
 		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; };
+		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; settings = {ASSET_TAGS = (); }; };
+		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; settings = {ASSET_TAGS = (); }; };
+		87FA902E1BC81AB0002D86F0 /* Level 2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 87FA902D1BC81AB0002D86F0 /* Level 2.sks */; settings = {ASSET_TAGS = (); }; };
 		E44A1BB51BC3505100B5DC95 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E44A1BB41BC3505100B5DC95 /* StartScene.sks */; };
 		E44A1BB71BC3509600B5DC95 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB61BC3509600B5DC95 /* StartScene.swift */; };
 		E44A1BB91BC3576700B5DC95 /* LevelSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */; };

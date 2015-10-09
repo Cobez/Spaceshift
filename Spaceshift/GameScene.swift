@@ -68,6 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         print("trying to rotate")
         if let blackhole = self.childNodeWithName("wall")!.childNodeWithName("blackhole") {
             print("trying harder")
+            self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
             blackhole.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(-1, duration: 1)))
             
             let spark = SKEmitterNode(fileNamed: "BlackHoleEmitter")
@@ -82,7 +83,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: NSTimeInterval) {
         if let wall = self.childNodeWithName("wall") {
             wall.position = worldPosition
-            
         }
 
         starTimer += 1
@@ -201,30 +201,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let magY = abs(contact.contactPoint.y - user.position.y)
             let magX = abs(contact.contactPoint.x - user.position.x)
             
-            print("\(magX), \(magY)")
+//            print("\(magX), \(magY)")
             //            colliding = true
             if magY > magX && abs(magX - magY) > 5 {
                 if contact.contactPoint.y > user.position.y {
                     // Moving wall down, phone up
                     collisions[0] = 1
-                    print("Contact Above")
+//                    print("Contact Above")
                 }
                 else if contact.contactPoint.y < user.position.y {
                     // Moving wall up, phone down
                     collisions[1] = 1
-                    print("Contact Below")
+//                    print("Contact Below")
                 }
             }
             else if magY < magX && abs(magX-magY) > 5 {
                 if contact.contactPoint.x > user.position.x  {
                     // Moving wall right, phone left
                     collisions[2] = 1
-                    print("Contact Right")
+//                    print("Contact Right")
                 }
                 else if contact.contactPoint.x < user.position.x  {
                     // Moving wall left, phone right
                     collisions[3] = 1
-                    print("Contact Left")
+//                    print("Contact Left")
                 }
             }
 //         print("\(collisions)")
@@ -233,7 +233,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let magY = abs(contact.contactPoint.y - user.position.y)
             let magX = abs(contact.contactPoint.x - user.position.x)
             
-            print("\(magX), \(magY)")
+//            print("\(magX), \(magY)")
             //            colliding = true
             if magY > magX && abs(magX - magY) > 5 {
                 if contact.contactPoint.y > user.position.y {

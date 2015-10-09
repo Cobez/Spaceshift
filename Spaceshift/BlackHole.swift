@@ -18,7 +18,7 @@ class BlackHole: SKSpriteNode {
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
         self.name = "blackhole"
         self.zPosition = 3
-        self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 10)
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = blackPhys
         self.physicsBody?.contactTestBitMask = userPhys

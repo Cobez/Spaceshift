@@ -47,7 +47,7 @@ class User: SKSpriteNode {
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
         self.name = "user"
         
-        self.physicsBody = SKPhysicsBody(circleOfRadius: 75)
+        self.physicsBody = SKPhysicsBody(circleOfRadius: 70)
         self.physicsBody?.dynamic = true
 //        self.physicsBody!.resting = true
         self.physicsBody?.categoryBitMask = userPhys
