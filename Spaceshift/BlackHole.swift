@@ -20,7 +20,7 @@ class BlackHole: SKSpriteNode {
         self.zPosition = 3
         self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
         self.physicsBody?.dynamic = false
-        self.physicsBody?.categoryBitMask = wallPhys
+        self.physicsBody?.categoryBitMask = blackPhys
         self.physicsBody?.contactTestBitMask = userPhys
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.friction = 0.0

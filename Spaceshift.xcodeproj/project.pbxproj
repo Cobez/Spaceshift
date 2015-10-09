@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; settings = {ASSET_TAGS = (); }; };
-		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; settings = {ASSET_TAGS = (); }; };
+		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; };
+		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; };
 		E44A1BB51BC3505100B5DC95 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E44A1BB41BC3505100B5DC95 /* StartScene.sks */; };
 		E44A1BB71BC3509600B5DC95 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB61BC3509600B5DC95 /* StartScene.swift */; };
 		E44A1BB91BC3576700B5DC95 /* LevelSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */; };
@@ -39,6 +39,7 @@
 		E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = E49F34C91BC80567008492F4 /* FinishWindow.png */; };
 		E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4A59C791BBF445F009A08E9 /* GameScene.sks */; };
 		E4C731E61BBD087200626807 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4C731E51BBD087200626807 /* Spark.sks */; };
+		E4D9F1AF1BC8144B008D4BF6 /* BlackHoleEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		E49F34C91BC80567008492F4 /* FinishWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FinishWindow.png; sourceTree = "<group>"; };
 		E4A59C791BBF445F009A08E9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		E4C731E51BBD087200626807 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
+		E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlackHoleEmitter.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				E4A59C791BBF445F009A08E9 /* GameScene.sks */,
 				E4613DA11BA7CA100098DD2F /* GameScene.swift */,
 				E49F34C71BC74CE1008492F4 /* PassBarrier.swift */,
+				6D2CB14D1BC718E700261016 /* BlackHole.swift */,
 				E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */,
 				E44A1BB61BC3509600B5DC95 /* StartScene.swift */,
 				E48A14B51BAC542A0098713C /* DataLabel.swift */,
@@ -178,6 +181,7 @@
 				E4613D721BA7C3AE0098DD2F /* Info.plist */,
 				E44A1BB41BC3505100B5DC95 /* StartScene.sks */,
 				E4647E751BC47C84008EC532 /* LevelSelectionScene.sks */,
+				E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */,
 			);
 			path = Spaceshift;
 			sourceTree = "<group>";
@@ -267,7 +271,7 @@
 				TargetAttributes = {
 					E4613D5E1BA7C3AE0098DD2F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = Q372K6W4YS;
+						DevelopmentTeam = 5DKA8C9JGY;
 					};
 					E4613D761BA7C3AE0098DD2F = {
 						CreatedOnToolsVersion = 7.1;
@@ -316,6 +320,7 @@
 				E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */,
 				E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */,
 				E4903A551BBCA84800FDCD57 /* SSBackground.png in Resources */,
+				E4D9F1AF1BC8144B008D4BF6 /* BlackHoleEmitter.sks in Resources */,
 				E4C731E61BBD087200626807 /* Spark.sks in Resources */,
 				E44A1BB51BC3505100B5DC95 /* StartScene.sks in Resources */,
 				E4903A631BBCE84800FDCD57 /* Clouds.sks in Resources */,

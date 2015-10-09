@@ -59,11 +59,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupAccelLabels()
         performSelector(Selector("enableGyroControl"), withObject: nil, afterDelay: 1)
 //        enableGyroControl()
+        
+//        enableGyroControl()
+        rotateBlackHole()
+    }
+    
+    func rotateBlackHole() {
+        print("trying to rotate")
+        if let blackhole = self.childNodeWithName("wall")!.childNodeWithName("blackhole") {
+            print("trying harder")
+            blackhole.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(-1, duration: 1)))
+            
+            let spark = SKEmitterNode(fileNamed: "BlackHoleEmitter")
+            spark!.advanceSimulationTime(10)
+            spark!.position = blackhole.position
+            spark!.zPosition = blackhole.zPosition + 1
+            spark!.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(1, duration: 1)))
+            self.childNodeWithName("wall")!.addChild(spark!)
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {
         if let wall = self.childNodeWithName("wall") {
             wall.position = worldPosition
+            
         }
 
         starTimer += 1
@@ -248,9 +267,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         else if boundary.categoryBitMask == blackPhys {
+            print("Contact with hole")
             let finish = SKSpriteNode(imageNamed: "FinishWindow")
             finish.position = center!
-            addChild(finish)
+            finish.zPosition = 30
+            self.addChild(finish)
+            motion.stopGyroUpdates()
             performSelector(Selector("presentNextLevel"), withObject: nil, afterDelay: 3)
         }
 

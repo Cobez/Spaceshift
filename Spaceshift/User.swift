@@ -51,7 +51,7 @@ class User: SKSpriteNode {
         self.physicsBody?.dynamic = true
 //        self.physicsBody!.resting = true
         self.physicsBody?.categoryBitMask = userPhys
-        self.physicsBody?.contactTestBitMask = wallPhys | passPhys
+        self.physicsBody?.contactTestBitMask = wallPhys | passPhys | blackPhys
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.friction = 0.0
         self.physicsBody?.restitution = 0.0
