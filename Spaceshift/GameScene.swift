@@ -10,12 +10,9 @@ import SpriteKit
 import CoreMotion
 
 let userPhys:UInt32 = 0x1
-let leftUser:UInt32 = 0x1 << 1
-let rightUser:UInt32 = 0x1 << 2
-let topUser:UInt32 = 0x1 << 3
-let lowUser:UInt32 = 0x1 << 4
+let blackPhys:UInt32 = 0x1 << 3
 let wallPhys:UInt32 = 0x1 << 5
-
+let passPhys:UInt32 = 0x1 << 4
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     let motion = CMMotionManager()
@@ -31,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let user:User = User()
 //    var wall:SKNode?
     let face = SKSpriteNode(imageNamed: "face")
+    var center:CGPoint?
     
 
     let clouds:SKEmitterNode = SKEmitterNode(fileNamed: "Clouds")!
@@ -38,8 +36,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var starTimer:Int = 0
     var worldPosition:CGPoint = CGPointMake(0.5, 0.5)
-//    var lastWorldPosition:CGPoint = CGPointMake(0, 0)
-    var collisions:UInt32 = 0x0
+
+    var collisions:[Int] = [0, 0, 0, 0,]
+    
     
     let gx = DataLabel()
     let gy = DataLabel()
@@ -50,81 +49,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let az = DataLabel()
     
     override func didMoveToView(view: SKView) {
+        center = CGPointMake(self.frame.width/2, self.frame.height/2)
+
         self.worldPosition = CGPointMake(self.frame.width/2, self.frame.height/2)
         setupEnvironment()
         setupUser()
         
         setupGyroLabels()
         setupAccelLabels()
-        
-        enableGyroControl()
+        performSelector(Selector("enableGyroControl"), withObject: nil, afterDelay: 1)
+//        enableGyroControl()
     }
     
     override func update(currentTime: NSTimeInterval) {
         if let wall = self.childNodeWithName("wall") {
-//            if collisions & (0x1 << 1) > 0 && dY < threshold {
-//                // Moving wall down, phone up
-//                print("Trying to move downward")
-//                //                collisions = collisions & (0x0 << 2)
-//                //                collisions = collisions & (0x0 << 1)
-//                print("Collision is now \(collisions)")
-//                collisions = 0x0
-//                wall.position = worldPosition
-//            }
-//            else if collisions & (0x1 << 2) > 0 {
-//                print("trying to move upward")
-//                //                collisions = collisions & (0x0 << 1)
-//                //                collisions = collisions & (0x0 << 2)
-////                collisions = 0x0
-//                print("Collision is now \(collisions)")
-//                wall.position.x - worldPosition.x
-//                if worldPosition.y > wall.position.y {
-//                    wall.position.y = worldPosition.y
-//                }
-////                wall.position = worldPosition
-//            }
-//            if collisions & (0x1 << 3) > 0 {
-//                print("Trying to move left")
-//                collisions = collisions & (0x0 << 3)
-//                wall.position = worldPosition
-//            }
-//            else if collisions & (0x1 << 4) > 0 {
-//                print("Trying to move right")
-//                collisions = collisions & (0x0 << 4)
-//                wall.position = worldPosition
-//            }
-//            if (collisions == 0x0) {
-                wall.position = worldPosition
-//            }
-            
+            wall.position = worldPosition
         }
-//        collisions = 0x0
 
         starTimer += 1
         if (starTimer >= 40) {
             addShootingStars()
             starTimer = 0
         }
-        
+
         face.position = user.position
-        
-        if (user.position != CGPointMake(self.frame.width/2, self.frame.height/2)) &&
-        collisions == 0x0 {
-            user.position = CGPointMake(self.frame.width/2, self.frame.height/2)
-            user.stopSpin()
-        }
-//        else if user.actionForKey("rotation") == nil {
-//            user.startSpin()
-//        }
     }
     
     func enableGyroControl() {
-        let delta:CGFloat = 17   // Normalized control movement
+        let delta:CGFloat = 20   // Normalized control movement
         
 //        let wall = self.childNodeWithName("wall")
         if motion.gyroAvailable {
             motion.startGyroUpdates()
-            motion.gyroUpdateInterval = 1.0 / 60.0
+            motion.gyroUpdateInterval = 1.0 / 100.0
             motion.startGyroUpdatesToQueue(queue, withHandler: { data, error in
                 guard let data = data else {
                     return
@@ -134,32 +91,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 // Move either vertically or horizontally, but not both
                 if abs(data.rotationRate.y) > abs(data.rotationRate.x) {
                     self.dY = data.rotationRate.y
-                    if data.rotationRate.y > self.threshold && self.collisions & (0x1 << 2) <= 0 {
-//                        wall!.position.y = (wall!.position.y + round(CGFloat(data.rotationRate.y+1))*delta)
-                        self.collisions = self.collisions & (0x0 << 1)
-                        self.worldPosition.y = (self.worldPosition.y + round(CGFloat(data.rotationRate.y+1))*delta)
+                    if data.rotationRate.y > self.threshold && self.collisions[1] == 0  {
+                        self.worldPosition.y = (self.worldPosition.y + delta)
+                        self.collisions[0] = 0
                     }
-                    else if data.rotationRate.y < -self.threshold && self.collisions & (0x1 << 1) <= 0 {
-//                        wall!.position.y = (wall!.position.y + round(CGFloat(data.rotationRate.y-1))*delta)
-                        self.collisions = self.collisions & (0x0 << 2)
-                        self.worldPosition.y = (self.worldPosition.y + round(CGFloat(data.rotationRate.y-1))*delta)
+                    else if data.rotationRate.y < -self.threshold && self.collisions[0] == 0 {
+                        self.worldPosition.y = (self.worldPosition.y - delta)
+                        self.collisions[1] = 0
                     }
                 } else {
                     self.dX = data.rotationRate.x
-                    if data.rotationRate.x > self.threshold && self.collisions & (0x1 << 4) <= 0 {
-//                        wall!.position.x = (wall!.position.x + round(CGFloat(data.rotationRate.x+1))*delta)
-                        self.collisions = self.collisions & (0x0 << 3)
-                        self.worldPosition.x = (self.worldPosition.x + round(CGFloat(data.rotationRate.x+1))*delta)
+                    if data.rotationRate.x > self.threshold && self.collisions[3] == 0 {
+                        self.worldPosition.x = (self.worldPosition.x + delta)
+                        self.collisions[2] = 0
                     }
-                    else if data.rotationRate.x < -self.threshold && self.collisions & (0x1 << 3) <= 0 {
-//                        wall!.position.x = (wall!.position.x + round(CGFloat(data.rotationRate.x-1))*delta)
-                        self.collisions = self.collisions & (0x0 << 4)
-                        self.worldPosition.x = (self.worldPosition.x + round(CGFloat(data.rotationRate.x-1))*delta)
+                    else if data.rotationRate.x < -self.threshold && self.collisions[2] == 0 {
+                        self.worldPosition.x = (self.worldPosition.x - delta)
+                        self.collisions[3] = 0
                     }
                 }
+                
             })
         }
     }
+    
     
     func enableAccelControl() {
         //        let delta:CGFloat = 5
@@ -211,6 +166,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
         addChild(user)
         addChild(face)
+        user.startSpin()
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -231,27 +187,80 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if magY > magX && abs(magX - magY) > 5 {
                 if contact.contactPoint.y > user.position.y {
                     // Moving wall down, phone up
-                    collisions = collisions | (0x1 << 1)
+                    collisions[0] = 1
                     print("Contact Above")
                 }
                 else if contact.contactPoint.y < user.position.y {
                     // Moving wall up, phone down
-                    collisions = collisions | (0x1 << 2)
+                    collisions[1] = 1
                     print("Contact Below")
                 }
-            } else if magY < magX && abs(magX-magY) > 5 {
+            }
+            else if magY < magX && abs(magX-magY) > 5 {
                 if contact.contactPoint.x > user.position.x  {
                     // Moving wall right, phone left
-                    collisions = collisions | (0x1 << 3)
+                    collisions[2] = 1
                     print("Contact Right")
                 }
                 else if contact.contactPoint.x < user.position.x  {
                     // Moving wall left, phone right
-                    collisions = collisions | (0x1 << 4)
+                    collisions[3] = 1
                     print("Contact Left")
                 }
             }
 //         print("\(collisions)")
+        }
+        else if boundary.categoryBitMask == passPhys {
+            let magY = abs(contact.contactPoint.y - user.position.y)
+            let magX = abs(contact.contactPoint.x - user.position.x)
+            
+            print("\(magX), \(magY)")
+            //            colliding = true
+            if magY > magX && abs(magX - magY) > 5 {
+                if contact.contactPoint.y > user.position.y {
+                    // Moving wall down, phone up
+                    collisions[2] = 0
+                    collisions[3] = 0
+                    print("Contact Above")
+                }
+                else if contact.contactPoint.y < user.position.y {
+                    // Moving wall up, phone down
+                    collisions[2] = 0
+                    collisions[3] = 0
+                    print("Contact Below")
+                }
+            }
+            else if magY < magX && abs(magX-magY) > 5 {
+                if contact.contactPoint.x > user.position.x  {
+                    // Moving wall right, phone left
+                    collisions[0] = 0
+                    collisions[1] = 0
+                    print("Contact Right")
+                }
+                else if contact.contactPoint.x < user.position.x  {
+                    // Moving wall left, phone right
+                    collisions[1] = 0
+                    collisions[0] = 0
+                    print("Contact Left")
+                }
+            }
+            //         print("\(collisions)")
+        }
+        
+        else if boundary.categoryBitMask == blackPhys {
+            let finish = SKSpriteNode(imageNamed: "FinishWindow")
+            finish.position = center!
+            addChild(finish)
+            performSelector(Selector("presentNextLevel"), withObject: nil, afterDelay: 3)
+        }
+
+    }
+    
+    func presentNextLevel() {
+        if let nextScene = GameScene(fileNamed: "GameScene") {
+            nextScene.size = self.size
+            nextScene.scaleMode = .AspectFill
+            self.view?.presentScene(nextScene, transition: SKTransition.fadeWithColor(SKColor.blackColor(), duration: 1))
         }
     }
     

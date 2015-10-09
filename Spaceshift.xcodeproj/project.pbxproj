@@ -33,6 +33,8 @@
 		E4903A5D1BBCE5A400FDCD57 /* face.png in Resources */ = {isa = PBXBuildFile; fileRef = E4903A5B1BBCE5A400FDCD57 /* face.png */; };
 		E4903A611BBCE81000FDCD57 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = E4903A601BBCE81000FDCD57 /* spark.png */; };
 		E4903A631BBCE84800FDCD57 /* Clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4903A621BBCE84800FDCD57 /* Clouds.sks */; };
+		E49F34C81BC74CE1008492F4 /* PassBarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F34C71BC74CE1008492F4 /* PassBarrier.swift */; };
+		E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = E49F34C91BC80567008492F4 /* FinishWindow.png */; };
 		E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4A59C791BBF445F009A08E9 /* GameScene.sks */; };
 		E4C731E61BBD087200626807 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4C731E51BBD087200626807 /* Spark.sks */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		E4903A5B1BBCE5A400FDCD57 /* face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = face.png; sourceTree = "<group>"; };
 		E4903A601BBCE81000FDCD57 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		E4903A621BBCE84800FDCD57 /* Clouds.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Clouds.sks; sourceTree = "<group>"; };
+		E49F34C71BC74CE1008492F4 /* PassBarrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassBarrier.swift; sourceTree = "<group>"; };
+		E49F34C91BC80567008492F4 /* FinishWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FinishWindow.png; sourceTree = "<group>"; };
 		E4A59C791BBF445F009A08E9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		E4C731E51BBD087200626807 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +145,7 @@
 		E4613D611BA7C3AE0098DD2F /* Spaceshift */ = {
 			isa = PBXGroup;
 			children = (
+				E49F34C91BC80567008492F4 /* FinishWindow.png */,
 				E4647E771BC48015008EC532 /* column2.png */,
 				E4647E781BC48015008EC532 /* LevelTile.png */,
 				E4903A601BBCE81000FDCD57 /* spark.png */,
@@ -150,6 +155,7 @@
 				E4613D621BA7C3AE0098DD2F /* AppDelegate.swift */,
 				E4A59C791BBF445F009A08E9 /* GameScene.sks */,
 				E4613DA11BA7CA100098DD2F /* GameScene.swift */,
+				E49F34C71BC74CE1008492F4 /* PassBarrier.swift */,
 				E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */,
 				E44A1BB61BC3509600B5DC95 /* StartScene.swift */,
 				E48A14B51BAC542A0098713C /* DataLabel.swift */,
@@ -302,6 +308,7 @@
 				E4903A5C1BBCE5A400FDCD57 /* body.png in Resources */,
 				E4903A5D1BBCE5A400FDCD57 /* face.png in Resources */,
 				E4647E7A1BC48015008EC532 /* LevelTile.png in Resources */,
+				E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */,
 				E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */,
 				E4903A551BBCA84800FDCD57 /* SSBackground.png in Resources */,
 				E4C731E61BBD087200626807 /* Spark.sks in Resources */,
@@ -343,6 +350,7 @@
 				E4613DA61BA7CA100098DD2F /* GameScene.swift in Sources */,
 				E4613DA71BA7CA100098DD2F /* User.swift in Sources */,
 				E4647E7C1BC4880B008EC532 /* LevelTile.swift in Sources */,
+				E49F34C81BC74CE1008492F4 /* PassBarrier.swift in Sources */,
 				E4613DA51BA7CA100098DD2F /* Column.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
