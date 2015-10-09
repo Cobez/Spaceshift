@@ -58,6 +58,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         setupAccelLabels()
         
         enableGyroControl()
+        rotateBlackHole()
+    }
+    
+    func rotateBlackHole() {
+        print("trying to rotate")
+        if let blackhole = self.childNodeWithName("blackhole") {
+            blackhole.runAction(SKAction.repeatActionForever(SKAction.rotateByAngle(20, duration: 0.5)))
+        }
     }
     
     override func update(currentTime: NSTimeInterval) {

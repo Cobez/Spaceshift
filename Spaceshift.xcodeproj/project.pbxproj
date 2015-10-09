@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; settings = {ASSET_TAGS = (); }; };
+		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; settings = {ASSET_TAGS = (); }; };
 		E44A1BB51BC3505100B5DC95 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E44A1BB41BC3505100B5DC95 /* StartScene.sks */; };
 		E44A1BB71BC3509600B5DC95 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB61BC3509600B5DC95 /* StartScene.swift */; };
 		E44A1BB91BC3576700B5DC95 /* LevelSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */; };
@@ -55,6 +57,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6D2CB14D1BC718E700261016 /* BlackHole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackHole.swift; sourceTree = "<group>"; };
+		6D2CB14F1BC71D0C00261016 /* black_butthole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_butthole.png; sourceTree = "<group>"; };
 		E44A1BB41BC3505100B5DC95 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		E44A1BB61BC3509600B5DC95 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionScene.swift; sourceTree = "<group>"; };
@@ -144,12 +148,14 @@
 				E4647E771BC48015008EC532 /* column2.png */,
 				E4647E781BC48015008EC532 /* LevelTile.png */,
 				E4903A601BBCE81000FDCD57 /* spark.png */,
+				6D2CB14F1BC71D0C00261016 /* black_butthole.png */,
 				E4903A5A1BBCE5A400FDCD57 /* body.png */,
 				E4903A5B1BBCE5A400FDCD57 /* face.png */,
 				E4903A581BBCE18300FDCD57 /* user.png */,
 				E4613D621BA7C3AE0098DD2F /* AppDelegate.swift */,
 				E4A59C791BBF445F009A08E9 /* GameScene.sks */,
 				E4613DA11BA7CA100098DD2F /* GameScene.swift */,
+				6D2CB14D1BC718E700261016 /* BlackHole.swift */,
 				E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */,
 				E44A1BB61BC3509600B5DC95 /* StartScene.swift */,
 				E48A14B51BAC542A0098713C /* DataLabel.swift */,
@@ -256,7 +262,7 @@
 				TargetAttributes = {
 					E4613D5E1BA7C3AE0098DD2F = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = 5DKA8C9JGY;
+						DevelopmentTeam = Q372K6W4YS;
 					};
 					E4613D761BA7C3AE0098DD2F = {
 						CreatedOnToolsVersion = 7.1;
@@ -311,6 +317,7 @@
 				E4903A571BBCD5B100FDCD57 /* column.png in Resources */,
 				E4613D6E1BA7C3AE0098DD2F /* Assets.xcassets in Resources */,
 				E4613D6C1BA7C3AE0098DD2F /* Main.storyboard in Resources */,
+				6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +349,7 @@
 				E48A14B61BAC542A0098713C /* DataLabel.swift in Sources */,
 				E4613DA61BA7CA100098DD2F /* GameScene.swift in Sources */,
 				E4613DA71BA7CA100098DD2F /* User.swift in Sources */,
+				6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */,
 				E4647E7C1BC4880B008EC532 /* LevelTile.swift in Sources */,
 				E4613DA51BA7CA100098DD2F /* Column.swift in Sources */,
 			);
@@ -488,11 +496,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Spaceshift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cobez.Spaceshift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -503,11 +512,12 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Spaceshift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Cobez.Spaceshift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
