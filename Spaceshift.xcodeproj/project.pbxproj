@@ -62,6 +62,7 @@
 /* Begin PBXFileReference section */
 		6D2CB14D1BC718E700261016 /* BlackHole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackHole.swift; sourceTree = "<group>"; };
 		6D2CB14F1BC71D0C00261016 /* black_butthole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_butthole.png; sourceTree = "<group>"; };
+		87FA902D1BC81AB0002D86F0 /* Level 2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level 2.sks"; sourceTree = "<group>"; };
 		E44A1BB41BC3505100B5DC95 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		E44A1BB61BC3509600B5DC95 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionScene.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 				E4613D6F1BA7C3AE0098DD2F /* LaunchScreen.storyboard */,
 				E4613D721BA7C3AE0098DD2F /* Info.plist */,
 				E44A1BB41BC3505100B5DC95 /* StartScene.sks */,
+				87FA902D1BC81AB0002D86F0 /* Level 2.sks */,
 				E4647E751BC47C84008EC532 /* LevelSelectionScene.sks */,
 				E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */,
 			);
@@ -316,6 +318,7 @@
 				E4903A591BBCE18300FDCD57 /* user.png in Resources */,
 				E4903A5C1BBCE5A400FDCD57 /* body.png in Resources */,
 				E4903A5D1BBCE5A400FDCD57 /* face.png in Resources */,
+				87FA902E1BC81AB0002D86F0 /* Level 2.sks in Resources */,
 				E4647E7A1BC48015008EC532 /* LevelTile.png in Resources */,
 				E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */,
 				E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */,
