@@ -1,23 +1,22 @@
 //
-//  Column.swift
-//  GyroTest
+//  FinishLevel.swift
+//  Spaceshift
 //
-//  Created by Coburn Brandon on 9/14/15.
-//  Copyright © 2015 Coburn Brandon. All rights reserved.
+//  Created by Anthony Meyer on 10/8/15.
+//  Copyright © 2015 EElite. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import SpriteKit
 
-class Column: SKSpriteNode {
-    
+
+class BlackHole: SKSpriteNode {
     // Declare class variables here, such as a grid position
-    
     init() {
         print("hello")
-        let texture = SKTexture(imageNamed: "column")
+        let texture = SKTexture(imageNamed: "black_butthole")
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
-        self.name = "column"
+        self.name = "blackhole"
         self.zPosition = 3
         self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
         self.physicsBody?.dynamic = false
@@ -33,6 +32,4 @@ class Column: SKSpriteNode {
     }
     
     // Declare functions here
-    
-
 }

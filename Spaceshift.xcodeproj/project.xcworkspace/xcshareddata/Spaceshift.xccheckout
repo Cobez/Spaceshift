@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B1F3C313-63E7-4227-9A1A-9831825C2EAC</string>
+	<key>IDESourceControlProjectName</key>
+	<string>project</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>585EFEA5B145ADD5D4E73947E1B92C4DA005124E</key>
+		<string>https://github.com/Cobez/Spaceshift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Spaceshift.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>585EFEA5B145ADD5D4E73947E1B92C4DA005124E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Cobez/Spaceshift.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>585EFEA5B145ADD5D4E73947E1B92C4DA005124E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>585EFEA5B145ADD5D4E73947E1B92C4DA005124E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Spaceshift</string>
+		</dict>
+	</array>
+</dict>
+</plist>
