@@ -19,6 +19,7 @@ class Column: SKSpriteNode {
         super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
         self.name = "column"
         self.zPosition = 3
+        
         self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
         self.physicsBody?.dynamic = false
         self.physicsBody?.categoryBitMask = wallPhys

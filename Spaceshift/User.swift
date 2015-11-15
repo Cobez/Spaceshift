@@ -42,16 +42,83 @@ class User: SKSpriteNode {
 }*/
 class User: SKSpriteNode {
     // Vars here
+    let userParticles = SKNode()
     init() {
         let texture = SKTexture(imageNamed: "body")
-        super.init(texture: texture, color: SKColor.clearColor(), size: texture.size())
+        super.init(texture: nil, color: SKColor.clearColor(), size: texture.size())
         self.name = "user"
+        
+//        let leftTexture = SKTexture(imageNamed: "leftProbe")
+//        let leftProbe = SKSpriteNode(imageNamed: "leftProbe")
+//        leftProbe.physicsBody = SKPhysicsBody(texture: leftTexture, alphaThreshold: 0.5, size: leftTexture.size())
+//        leftProbe.physicsBody?.dynamic = true
+//        leftProbe.physicsBody?.categoryBitMask = leftPhys
+//        leftProbe.physicsBody?.contactTestBitMask = wallPhys
+//        self.addChild(leftProbe)
+        
+        let aura = SKEmitterNode(fileNamed: "userParticle")
+        aura?.advanceSimulationTime(10)
+        aura?.zPosition = 20
+        self.addChild(aura!)
+        
+        // create revolving sprite
+        let cwParticle = SKEmitterNode(fileNamed: "userBound")
+        cwParticle?.advanceSimulationTime(10)
+        cwParticle?.zPosition = 21
+        cwParticle?.targetNode = self;
+        self.addChild(cwParticle!)
+        
+        let cParticle = SKEmitterNode(fileNamed: "userBound")
+        cParticle?.advanceSimulationTime(10)
+        cParticle?.zPosition = 21
+        cParticle?.targetNode = self;
+        self.addChild(cParticle!)
+        
+        let crossParticle = SKEmitterNode(fileNamed: "userBound")
+        crossParticle?.advanceSimulationTime(10)
+        crossParticle?.zPosition = 21
+        crossParticle?.targetNode = self;
+        userParticles.addChild(crossParticle!)
+        
+        let vParticle = SKEmitterNode(fileNamed: "userBound")
+        vParticle?.advanceSimulationTime(10)
+        vParticle?.zPosition = 21
+        vParticle?.targetNode = self;
+        userParticles.addChild(vParticle!)
+        
+        var boundary: CGPathRef? = nil
+        boundary = CGPathCreateWithEllipseInRect(CGRectMake(self.frame.width/2 - 120, self.frame.height/2 - 120, 120, 120), nil)
+        let trace = SKAction.followPath(boundary!, asOffset: false, orientToPath: true, duration: 1.5)
+        let traceForever = SKAction.repeatActionForever(trace)
+        cwParticle!.runAction(traceForever)
+//        cParticle!.runAction(traceForever.reversedAction())
+        let rTrace = SKAction.followPath(boundary!, asOffset: false, orientToPath: true, duration: 1)
+        let rTraceForever = SKAction.repeatActionForever(rTrace)
+        cParticle!.runAction(rTraceForever.reversedAction())
+        
+        var cross: CGPathRef? = nil
+        cross = CGPathCreateWithEllipseInRect(CGRectMake(self.frame.width/2 - 120, self.frame.height/2 - 75, 120, 20), nil)
+        let cCross = SKAction.followPath(cross!, asOffset: false, orientToPath: true, duration: 1)
+        let cCrossForever = SKAction.repeatActionForever(cCross)
+        crossParticle!.runAction(cCrossForever)
+        
+        var vert: CGPathRef? = nil
+        vert = CGPathCreateWithEllipseInRect(CGRectMake(self.frame.width/2 - 70, self.frame.height/2 - 120, 10, 120), nil)
+        let cVert = SKAction.followPath(vert!, asOffset: false, orientToPath: true, duration: 1)
+        let cVertForever = SKAction.repeatActionForever(cVert)
+        vParticle!.runAction(cVertForever)
+        
+        let rot = SKAction.rotateByAngle(20, duration: 5)
+        let rotForev = SKAction.repeatActionForever(rot)
+        userParticles.runAction(rotForev)
+        
+        self.addChild(userParticles)
         
         self.physicsBody = SKPhysicsBody(circleOfRadius: 70)
         self.physicsBody?.dynamic = true
 //        self.physicsBody!.resting = true
         self.physicsBody?.categoryBitMask = userPhys
-        self.physicsBody?.contactTestBitMask = wallPhys | passPhys | blackPhys
+        self.physicsBody?.contactTestBitMask = wallPhys | blackPhys | passPhys
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.friction = 0.0
         self.physicsBody?.restitution = 0.0
@@ -76,13 +143,14 @@ class User: SKSpriteNode {
     }
     
     func startSpin() {
-        let userRot = SKAction.repeatActionForever(SKAction.rotateByAngle(5, duration: 1))
-        self.runAction(userRot, withKey: "rotation")
+//        let userRot = SKAction.repeatActionForever(SKAction.rotateByAngle(20, duration: 5))
+//        let userRot = SKAction.rotateByAngle(4, duration: 1)
+//        userParticles.runAction(userRot, withKey: "rotation")
         
     }
     
     func stopSpin() {
-        self.removeActionForKey("rotation")
+        userParticles.removeActionForKey("rotation")
     }
 }
 

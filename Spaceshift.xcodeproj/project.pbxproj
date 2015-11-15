@@ -9,9 +9,11 @@
 /* Begin PBXBuildFile section */
 		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; };
 		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; };
-		6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2CB14D1BC718E700261016 /* BlackHole.swift */; settings = {ASSET_TAGS = (); }; };
-		6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2CB14F1BC71D0C00261016 /* black_butthole.png */; settings = {ASSET_TAGS = (); }; };
-		87FA902E1BC81AB0002D86F0 /* Level 2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 87FA902D1BC81AB0002D86F0 /* Level 2.sks */; settings = {ASSET_TAGS = (); }; };
+		87FA902E1BC81AB0002D86F0 /* Level 2.sks in Resources */ = {isa = PBXBuildFile; fileRef = 87FA902D1BC81AB0002D86F0 /* Level 2.sks */; };
+		E40CC6391BF8FBF80049E92B /* leftProbe.png in Resources */ = {isa = PBXBuildFile; fileRef = E40CC6381BF8FBF80049E92B /* leftProbe.png */; };
+		E40CC63B1BF915820049E92B /* column3.png in Resources */ = {isa = PBXBuildFile; fileRef = E40CC63A1BF915820049E92B /* column3.png */; };
+		E40CC63D1BF919FC0049E92B /* GameScene2.sks in Resources */ = {isa = PBXBuildFile; fileRef = E40CC63C1BF919FC0049E92B /* GameScene2.sks */; };
+		E40CC6411BF91C840049E92B /* GameScene3.sks in Resources */ = {isa = PBXBuildFile; fileRef = E40CC6401BF91C840049E92B /* GameScene3.sks */; };
 		E44A1BB51BC3505100B5DC95 /* StartScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E44A1BB41BC3505100B5DC95 /* StartScene.sks */; };
 		E44A1BB71BC3509600B5DC95 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB61BC3509600B5DC95 /* StartScene.swift */; };
 		E44A1BB91BC3576700B5DC95 /* LevelSelectionScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */; };
@@ -40,6 +42,10 @@
 		E4903A631BBCE84800FDCD57 /* Clouds.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4903A621BBCE84800FDCD57 /* Clouds.sks */; };
 		E49F34C81BC74CE1008492F4 /* PassBarrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E49F34C71BC74CE1008492F4 /* PassBarrier.swift */; };
 		E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = E49F34C91BC80567008492F4 /* FinishWindow.png */; };
+		E4A538841BF7B6E000B360B5 /* pauseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A538831BF7B6E000B360B5 /* pauseButton@2x.png */; };
+		E4A538861BF7B7D800B360B5 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4A538851BF7B7D800B360B5 /* PauseButton.swift */; };
+		E4A5388A1BF7D74E00B360B5 /* userParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4A538891BF7D74E00B360B5 /* userParticle.sks */; };
+		E4A5388C1BF7DF7100B360B5 /* userBound.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4A5388B1BF7DF7100B360B5 /* userBound.sks */; };
 		E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4A59C791BBF445F009A08E9 /* GameScene.sks */; };
 		E4C731E61BBD087200626807 /* Spark.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4C731E51BBD087200626807 /* Spark.sks */; };
 		E4D9F1AF1BC8144B008D4BF6 /* BlackHoleEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */; };
@@ -66,6 +72,10 @@
 		6D2CB14D1BC718E700261016 /* BlackHole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackHole.swift; sourceTree = "<group>"; };
 		6D2CB14F1BC71D0C00261016 /* black_butthole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = black_butthole.png; sourceTree = "<group>"; };
 		87FA902D1BC81AB0002D86F0 /* Level 2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level 2.sks"; sourceTree = "<group>"; };
+		E40CC6381BF8FBF80049E92B /* leftProbe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leftProbe.png; sourceTree = "<group>"; };
+		E40CC63A1BF915820049E92B /* column3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = column3.png; sourceTree = "<group>"; };
+		E40CC63C1BF919FC0049E92B /* GameScene2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene2.sks; sourceTree = "<group>"; };
+		E40CC6401BF91C840049E92B /* GameScene3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene3.sks; sourceTree = "<group>"; };
 		E44A1BB41BC3505100B5DC95 /* StartScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = StartScene.sks; sourceTree = "<group>"; };
 		E44A1BB61BC3509600B5DC95 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScene.swift; sourceTree = "<group>"; };
 		E44A1BB81BC3576700B5DC95 /* LevelSelectionScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectionScene.swift; sourceTree = "<group>"; };
@@ -100,6 +110,10 @@
 		E4903A621BBCE84800FDCD57 /* Clouds.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Clouds.sks; sourceTree = "<group>"; };
 		E49F34C71BC74CE1008492F4 /* PassBarrier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PassBarrier.swift; sourceTree = "<group>"; };
 		E49F34C91BC80567008492F4 /* FinishWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FinishWindow.png; sourceTree = "<group>"; };
+		E4A538831BF7B6E000B360B5 /* pauseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pauseButton@2x.png"; sourceTree = "<group>"; };
+		E4A538851BF7B7D800B360B5 /* PauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
+		E4A538891BF7D74E00B360B5 /* userParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = userParticle.sks; sourceTree = "<group>"; };
+		E4A5388B1BF7DF7100B360B5 /* userBound.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = userBound.sks; sourceTree = "<group>"; };
 		E4A59C791BBF445F009A08E9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		E4C731E51BBD087200626807 /* Spark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Spark.sks; sourceTree = "<group>"; };
 		E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BlackHoleEmitter.sks; sourceTree = "<group>"; };
@@ -155,6 +169,9 @@
 		E4613D611BA7C3AE0098DD2F /* Spaceshift */ = {
 			isa = PBXGroup;
 			children = (
+				E40CC63A1BF915820049E92B /* column3.png */,
+				E40CC6381BF8FBF80049E92B /* leftProbe.png */,
+				E4A538831BF7B6E000B360B5 /* pauseButton@2x.png */,
 				E49F34C91BC80567008492F4 /* FinishWindow.png */,
 				E4647E771BC48015008EC532 /* column2.png */,
 				E4647E781BC48015008EC532 /* LevelTile.png */,
@@ -165,6 +182,8 @@
 				E4903A581BBCE18300FDCD57 /* user.png */,
 				E4613D621BA7C3AE0098DD2F /* AppDelegate.swift */,
 				E4A59C791BBF445F009A08E9 /* GameScene.sks */,
+				E40CC63C1BF919FC0049E92B /* GameScene2.sks */,
+				E40CC6401BF91C840049E92B /* GameScene3.sks */,
 				E4613DA11BA7CA100098DD2F /* GameScene.swift */,
 				E49F34C71BC74CE1008492F4 /* PassBarrier.swift */,
 				6D2CB14D1BC718E700261016 /* BlackHole.swift */,
@@ -187,6 +206,9 @@
 				87FA902D1BC81AB0002D86F0 /* Level 2.sks */,
 				E4647E751BC47C84008EC532 /* LevelSelectionScene.sks */,
 				E4D9F1AE1BC8144B008D4BF6 /* BlackHoleEmitter.sks */,
+				E4A538851BF7B7D800B360B5 /* PauseButton.swift */,
+				E4A538891BF7D74E00B360B5 /* userParticle.sks */,
+				E4A5388B1BF7DF7100B360B5 /* userBound.sks */,
 			);
 			path = Spaceshift;
 			sourceTree = "<group>";
@@ -316,14 +338,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4647E761BC47C84008EC532 /* LevelSelectionScene.sks in Resources */,
+				E40CC6411BF91C840049E92B /* GameScene3.sks in Resources */,
 				E4903A611BBCE81000FDCD57 /* spark.png in Resources */,
 				E4647E791BC48015008EC532 /* column2.png in Resources */,
+				E40CC63D1BF919FC0049E92B /* GameScene2.sks in Resources */,
 				E4903A591BBCE18300FDCD57 /* user.png in Resources */,
 				E4903A5C1BBCE5A400FDCD57 /* body.png in Resources */,
 				E4903A5D1BBCE5A400FDCD57 /* face.png in Resources */,
+				E40CC63B1BF915820049E92B /* column3.png in Resources */,
+				E4A5388A1BF7D74E00B360B5 /* userParticle.sks in Resources */,
+				E4A538841BF7B6E000B360B5 /* pauseButton@2x.png in Resources */,
 				87FA902E1BC81AB0002D86F0 /* Level 2.sks in Resources */,
 				E4647E7A1BC48015008EC532 /* LevelTile.png in Resources */,
 				E49F34CA1BC80567008492F4 /* FinishWindow.png in Resources */,
+				E40CC6391BF8FBF80049E92B /* leftProbe.png in Resources */,
 				E4A59C7A1BBF445F009A08E9 /* GameScene.sks in Resources */,
 				E4903A551BBCA84800FDCD57 /* SSBackground.png in Resources */,
 				E4D9F1AF1BC8144B008D4BF6 /* BlackHoleEmitter.sks in Resources */,
@@ -334,6 +362,7 @@
 				E4903A571BBCD5B100FDCD57 /* column.png in Resources */,
 				E4613D6E1BA7C3AE0098DD2F /* Assets.xcassets in Resources */,
 				E4613D6C1BA7C3AE0098DD2F /* Main.storyboard in Resources */,
+				E4A5388C1BF7DF7100B360B5 /* userBound.sks in Resources */,
 				6D2CB1501BC71D0C00261016 /* black_butthole.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,6 +394,7 @@
 				E4613D631BA7C3AE0098DD2F /* AppDelegate.swift in Sources */,
 				E48A14B61BAC542A0098713C /* DataLabel.swift in Sources */,
 				E4613DA61BA7CA100098DD2F /* GameScene.swift in Sources */,
+				E4A538861BF7B7D800B360B5 /* PauseButton.swift in Sources */,
 				E4613DA71BA7CA100098DD2F /* User.swift in Sources */,
 				6D2CB14E1BC718E700261016 /* BlackHole.swift in Sources */,
 				E4647E7C1BC4880B008EC532 /* LevelTile.swift in Sources */,

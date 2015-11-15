@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+var level = 0
+
 class LevelSelectionScene: SKScene {
     var starTimer:Int = 0
     
@@ -66,6 +68,7 @@ class LevelSelectionScene: SKScene {
             let node = self.nodeAtPoint(touches.locationInNode(self))
             if node.name == "Level 1" || node.parent!.name == "Level 1" {
                 loadLevel("GameScene")
+                level += 1
             }
 //            if node.name == "Level 2" || node.parent!.name == "Level 2" {
 //                loadLevel("2")
