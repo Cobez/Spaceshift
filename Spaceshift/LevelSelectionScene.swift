@@ -65,8 +65,11 @@ class LevelSelectionScene: SKScene {
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touches: AnyObject in touches {
+            // Do error checking here before assigning the touch location as a node
             let node = self.nodeAtPoint(touches.locationInNode(self))
-            if node.name == "Level 1" || node.parent!.name == "Level 1" {
+            let name: String? = node.name
+            
+            if name == "Level 1" {
                 loadLevel("GameScene")
                 level += 1
             }

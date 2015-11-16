@@ -195,7 +195,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //        let wall = self.childNodeWithName("wall")
         if motion.gyroAvailable {
             motion.startGyroUpdates()
-            motion.gyroUpdateInterval = 1.0 / 100.0
+            motion.gyroUpdateInterval = 1.0 / 60.0
             motion.startGyroUpdatesToQueue(queue, withHandler: { data, error in
                 guard let data = data else {
                     return
@@ -268,11 +268,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         pause.position = CGPointMake(self.frame.width/1.1, self.frame.height/5)
         self.addChild(pause)
         
-//        if let wall = self.childNodeWithName("wall") {
-//            for child in wall.children {
-//                if child.physicsBody?.categoryBitMask == wallPhys {
-////                    print("\(child.frame.width), \(child.frame.height)")
+        if let wall = self.childNodeWithName("wall") {
+            for child in wall.children {
+                if child.physicsBody?.categoryBitMask == wallPhys {
+//                    print("\(child.frame.width), \(child.frame.height)")
 //                    let ch = child as! SKSpriteNode
+//                    let texture = SKTexture(imageNamed: "column4")
+//                    ch.texture = texture
 //                    ch.blendMode = .Screen
 //                    let vParticle = SKEmitterNode(fileNamed: "userBound")
 //                    vParticle?.advanceSimulationTime(10)
@@ -296,9 +298,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                    let trace = SKAction.followPath(boundary!, asOffset: false, orientToPath: true, duration: 3)
 //                    let traceForever = SKAction.repeatActionForever(trace)
 //                    vParticle!.runAction(traceForever)
-//                }
-//            }
-//        }
+                }
+            }
+        }
         
         //        let background = SKSpriteNode(imageNamed: "SSBackground")
         //        background.position = CGPointMake(self.frame.width/2, self.frame.height/2)
@@ -367,11 +369,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if contact.contactPoint.y > user.position.y {
                     // Moving wall down, phone up
                     collisions[0] = 1
+//                    ejectSpark(1)
                     print("\(collisions)")
                 }
                 else if contact.contactPoint.y < user.position.y {
                     // Moving wall up, phone down
                     collisions[1] = 1
+//                    ejectSpark(0)
                     print("\(collisions)")
                 }
             }
@@ -379,11 +383,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if contact.contactPoint.x > user.position.x  {
                     // Moving wall right, phone left
                     collisions[2] = 1
+//                    ejectSpark(3)
                     print("\(collisions)")
                 }
                 else if contact.contactPoint.x < user.position.x  {
                     // Moving wall left, phone right
                     collisions[3] = 1
+//                    ejectSpark(2)
                     print("\(collisions)")
                 }
             }
@@ -460,6 +466,37 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             performSelector(Selector("presentNextLevel"), withObject: nil, afterDelay: 2)
         }
 
+    }
+    
+    func ejectSpark(direction: Int) {
+        let spark = SKEmitterNode(fileNamed: "userBound")
+        spark?.advanceSimulationTime(10)
+        spark?.zPosition = 50
+        spark?.position = user.position
+        spark?.particleSpeed = 100
+        self.addChild(spark!)
+        
+        var dest = CGPointMake(0, 0)
+        if direction == 0 {
+             dest = CGPointMake(user.position.x, self.frame.height + self.frame.height)
+            spark?.yAcceleration = -500
+        } else if direction == 1 {
+             dest = CGPointMake(user.position.x, -self.frame.height - self.frame.height)
+            spark?.yAcceleration = 500
+        } else if direction == 2 {
+             dest = CGPointMake(self.frame.width + self.frame.width, user.position.y)
+            spark?.xAcceleration = -500
+            spark?.zRotation = CGFloat(M_PI_2)
+        } else if direction == 3 {
+             dest = CGPointMake(-self.frame.width - self.frame.height, user.position.y)
+            spark?.xAcceleration = 500
+            spark?.zRotation = CGFloat(M_PI_2)
+        }
+        
+        let shoot = SKAction.moveTo(dest, duration: 2.5)
+        let remove = SKAction.removeFromParent()
+        let eject = SKAction.sequence([shoot, remove])
+        spark?.runAction(eject)
     }
     
     func presentNextLevel() {

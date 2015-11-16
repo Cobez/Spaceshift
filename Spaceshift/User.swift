@@ -48,14 +48,6 @@ class User: SKSpriteNode {
         super.init(texture: nil, color: SKColor.clearColor(), size: texture.size())
         self.name = "user"
         
-//        let leftTexture = SKTexture(imageNamed: "leftProbe")
-//        let leftProbe = SKSpriteNode(imageNamed: "leftProbe")
-//        leftProbe.physicsBody = SKPhysicsBody(texture: leftTexture, alphaThreshold: 0.5, size: leftTexture.size())
-//        leftProbe.physicsBody?.dynamic = true
-//        leftProbe.physicsBody?.categoryBitMask = leftPhys
-//        leftProbe.physicsBody?.contactTestBitMask = wallPhys
-//        self.addChild(leftProbe)
-        
         let aura = SKEmitterNode(fileNamed: "userParticle")
         aura?.advanceSimulationTime(10)
         aura?.zPosition = 20
@@ -86,6 +78,12 @@ class User: SKSpriteNode {
         vParticle?.targetNode = self;
         userParticles.addChild(vParticle!)
         
+        let xParticle = SKEmitterNode(fileNamed: "userBound")
+        xParticle?.advanceSimulationTime(10)
+        xParticle?.zPosition = 21
+        xParticle?.targetNode = self;
+        userParticles.addChild(xParticle!)
+        
         var boundary: CGPathRef? = nil
         boundary = CGPathCreateWithEllipseInRect(CGRectMake(self.frame.width/2 - 120, self.frame.height/2 - 120, 120, 120), nil)
         let trace = SKAction.followPath(boundary!, asOffset: false, orientToPath: true, duration: 1.5)
@@ -108,6 +106,12 @@ class User: SKSpriteNode {
         let cVertForever = SKAction.repeatActionForever(cVert)
         vParticle!.runAction(cVertForever)
         
+        var xert: CGPathRef? = nil
+        xert = CGPathCreateWithEllipseInRect(CGRectMake(self.frame.width/2 - 105, self.frame.height/2 - 105, 70, 40), nil)
+        let cXert = SKAction.followPath(xert!, asOffset: false, orientToPath: true, duration: 1)
+        let cXertForever = SKAction.repeatActionForever(cXert)
+        xParticle!.runAction(cXertForever)
+        
         let rot = SKAction.rotateByAngle(20, duration: 5)
         let rotForev = SKAction.repeatActionForever(rot)
         userParticles.runAction(rotForev)
@@ -122,6 +126,7 @@ class User: SKSpriteNode {
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.friction = 0.0
         self.physicsBody?.restitution = 0.0
+        self.physicsBody?.allowsRotation = false    
     }
     
     required init?(coder aDecoder: NSCoder) {
